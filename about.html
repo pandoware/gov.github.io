@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Your Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>About Us</h1>
+    <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button onclick="logout()">Logout</button></li> <!-- Logout button -->
+    </ul>
+    </nav>
+  </header>
+  <section class="content">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis magna id orci finibus fringilla. Donec sit amet quam urna.</p>
+    
+    <div class="chat-container" id="chat-container">
+      <div id="chat-messages"></div>
+      <input type="text" id="message-input" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+<div class="chat-container" id="chat-container">
+  <div id="chat-messages"></div>
+  <input type="text" id="message-input" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+</div>
+<button onclick="clearMessages()">Clear Messages</button> <!-- Button to clear messages -->
+<button onclick="banIP('1.2.3.4')">Ban IP</button> <!-- Replace '1.2.3.4' with the IP you want to ban -->
+  </section>
+  <footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+  </footer>
+
+  <!-- Script to handle chat functionality -->
+  <script src="scripts.js"></script>
+</body>
+</html>

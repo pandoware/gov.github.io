@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Your Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Your Website</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="content">
+    <h2>Contact Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer quis magna id orci finibus fringilla. Donec sit amet quam urna.</p>
+    <form onsubmit="saveMessage(event)">
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="4" required></textarea><br><br>
+      <input type="submit" value="Submit">
+    </form>
+    <p id="confirmation"></p>
+    <p id="totalMessages"></p>
+    <button onclick="useException()">Use Exception</button>
+    <button onclick="redirectToSecretPage()">Go to Secret Page</button>
+  </section>
+  <footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+  </footer>
+
+  <!-- Script to handle form submission and display submitted messages -->
+  <script>
+    function saveMessage(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get user's IP address
+      var ipAddress = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
+
+      // Check if cooldown is active for this IP address
+      var cooldown = localStorage.getItem(ipAddress);
+      if (cooldown && Date.now() - parseInt(cooldown) < 3600000) { // 1 hour cooldown
+        alert("You can send only one message per hour.");
+        return;
+      }
+
+      // Save current timestamp as cooldown
+      localStorage.setItem(ipAddress, Date.now());
+
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var message = document.getElementById('message').value;
+
+      // Get stored messages or initialize as empty array
+      var messages = JSON.parse(localStorage.getItem('messages')) || [];
+      messages.push({ name: name, email: email, message: message });
+      localStorage.setItem('messages', JSON.stringify(messages));
+
+      // Update confirmation message
+      document.getElementById('confirmation').innerHTML = "Your message has been sent";
+
+      // Update total messages count
+      var totalMessages = messages.length;
+      document.getElementById('totalMessages').innerHTML = "Total messages sent: " + totalMessages;
+    }
+
+    function redirectToSecretPage() {
+      var password = prompt("Please enter the password:");
+      if (password === "ahmed") {
+        window.location.href = "secret_page.html";
+      } else {
+        alert("Incorrect password. Please try again.");
+      }
+    }
+
+    function useException() {
+      var exceptionCode = prompt("Please enter the exception code:");
+      if (exceptionCode === "ahmed") {
+        var ipAddress = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
+        localStorage.removeItem(ipAddress); // Remove cooldown for this IP address
+        alert("Exception code accepted. Cooldown removed.");
+      } else {
+        alert("Incorrect exception code. Please try again.");
+      }
+    }
+  </script>
+</body>
+</html>

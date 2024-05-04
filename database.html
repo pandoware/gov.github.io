@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Database - Your Website</title>
+</head>
+<body>
+  <script>
+    // Store registered usernames and passwords
+    localStorage.setItem('userDatabase', JSON.stringify([
+      { username: 'user1', password: 'password1' },
+      { username: 'user2', password: 'password2' },
+      // Add more users as needed
+    ]));
+  </script>
+</body>
+</html>

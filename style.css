@@ -1,0 +1,95 @@
+body {
+  font-family: 'Arial', sans-serif; /* Changed font family */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  margin: auto;
+}
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  height: calc(80vh - 0px); /* Adjusted to accommodate space for banner text */
+}
+
+.banner-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.banner-item.active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.banner-item.next {
+  transform: translateX(100%);
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Arial', sans-serif; /* Changed font family */
+  font-size: 20px;
+  color: #ffffff; /* Changed text color to #ffffff */
+  text-align: center;
+}
+
+header {
+  background-color: #001f3f;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  background-color: #001f3f;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  position: relative; /* Added to allow positioning of banner text */
+}
